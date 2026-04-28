@@ -52,7 +52,7 @@ PENANG, MALAYSIA.`;
     const buffer = doc.getZip().generate({ type: "nodebuffer" });
     fs.writeFileSync("output.docx", buffer);
 
-    res.download("output.docx");
+    res.download(`ASJ ${data.doc_number}.docx`);
 
   } catch (error) {
     console.error(error);
