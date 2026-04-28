@@ -6,6 +6,10 @@ const Docxtemplater = require("docxtemplater");
 const app = express();
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Server running");
+});
+
 app.post("/generate", (req, res) => {
   try {
     const data = req.body;
