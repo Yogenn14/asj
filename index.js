@@ -32,22 +32,23 @@ PENANG, MALAYSIA.`;
       paragraphLoop: true,
       linebreaks: true,
     });
+doc.render({
+  date: data.date,
+  doc_type: data.doc_type,
+  doc_number: data.doc_number,
+  company: data.company,
+  companyAddress,
+  attentionTitle: data.attentionTitle,
+  attention: data.attention,
+  project: data.project,
+  items: data.items,
+  total: data.total,
+  additionalText: data.additionalText
+});
 
-    doc.render({
-      date: data.date,
-      doc_type: data.doc_type,
-      doc_number: data.doc_number,
-      company: data.company,
-      companyAddress,
-      attentionTitle: data.attentionTitle,
-      attention: data.attention,
-      project: data.project,
-      items: data.items,
-      total: data.total,
-      additionalText: data.additionalText
-    });
-
-    //doc.render();
+const buffer = doc.getZip().generate({
+  type: "nodebuffer",
+});
 
 res.setHeader(
   "Content-Type",
