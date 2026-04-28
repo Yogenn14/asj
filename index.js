@@ -49,10 +49,17 @@ PENANG, MALAYSIA.`;
 
     //doc.render();
 
-    const buffer = doc.getZip().generate({ type: "nodebuffer" });
-    fs.writeFileSync(`ASJ ${data.doc_number}.docx`, buffer);
+res.setHeader(
+  "Content-Type",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+);
 
-    res.download(`ASJ ${data.doc_number}.docx`);
+res.setHeader(
+  "Content-Disposition",
+  `attachment; filename=ASJ-${data.doc_number}.docx`
+);
+
+res.send(buffer);
 
   } catch (error) {
     console.error(error);
