@@ -6,10 +6,6 @@ const Docxtemplater = require("docxtemplater");
 const app = express();
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Server running");
-});
-
 app.post("/generate", (req, res) => {
   try {
     const data = req.body;
@@ -54,7 +50,7 @@ PENANG, MALAYSIA.`;
     //doc.render();
 
     const buffer = doc.getZip().generate({ type: "nodebuffer" });
-    fs.writeFileSync("output.docx", buffer);
+    fs.writeFileSync(`ASJ ${data.doc_number}.docx`, buffer);
 
     res.download(`ASJ ${data.doc_number}.docx`);
 
@@ -64,8 +60,6 @@ PENANG, MALAYSIA.`;
   }
 });
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, "0.0.0.0", () => {
-  console.log("Server running on port " + PORT);
-});
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+}); 
