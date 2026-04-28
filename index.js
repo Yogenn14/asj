@@ -4,6 +4,14 @@ const PizZip = require("pizzip");
 const Docxtemplater = require("docxtemplater");
 
 const app = express();
+const cors = require("cors");
+
+app.use(cors({
+  origin: "*", 
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"]
+}));
+
 app.use(express.json());
 
 app.post("/generate", (req, res) => {
