@@ -6,6 +6,10 @@ const Docxtemplater = require("docxtemplater");
 const app = express();
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Server running");
+});
+
 app.post("/generate", (req, res) => {
   try {
     const data = req.body;
@@ -60,6 +64,8 @@ PENANG, MALAYSIA.`;
   }
 });
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
-}); 
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log("Server running on port " + PORT);
+});
