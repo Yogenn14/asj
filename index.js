@@ -33,7 +33,7 @@ PENANG, MALAYSIA.`;
       companyAddress = data.address || "";
     }
 
-    const content = fs.readFileSync("template.docx", "binary");
+    const content = fs.readFileSync("template(1).docx", "binary");
     const zip = new PizZip(content);
 
     const doc = new Docxtemplater(zip, {
