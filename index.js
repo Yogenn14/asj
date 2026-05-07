@@ -51,7 +51,9 @@ doc.render({
   project: data.project,
   items: data.items,
   total: data.total,
-  additionalText: data.additionalText
+  additionalText: data.additionalText,
+  additionalTitile: data.additionalTitile,
+  workdone: data.workdone
 });
 
 const buffer = doc.getZip().generate({
